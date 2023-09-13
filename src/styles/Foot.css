@@ -1,0 +1,22 @@
+:root{
+  --letfooter:rgb(59, 59, 59);
+  --actfooter:rgb(0, 50, 126);
+}
+.attribution{
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  color: var(--letfooter);
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  background-color: white;
+  font-weight: 500;
+}
+.attribution a{
+  color: var(--letfooter);
+}
+.attribution a:hover{
+  color: var(--actfooter);
+}
