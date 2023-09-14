@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Info.css';
 
-function Buscador({ip,loca,zone,isp}){
+function Info({ip,loca,zone,isp}){
   return(
     <div className="continfo">
       <div className='conttabla'>
@@ -27,4 +27,4 @@ function Buscador({ip,loca,zone,isp}){
   );
 }
 
-export default Buscador;
+export default Info;

@@ -1,3 +1,4 @@
+
 /*
 const http = require("node:http");
 
@@ -19,7 +20,7 @@ var http = require('https');
 
 var ip = '186.107.40.233';
 var api_key = 'at_9l3N2tCsVkgAUAg0QCccpiuKdC7y7';
-var api_url = 'https://geo.ipify.org/api/v2/country?';
+var api_url = 'https://geo.ipify.org/api/v2/country,city?';
 
 var url = api_url + 'apiKey=' + api_key + '&ipAddress=' + ip;
 
@@ -36,8 +37,10 @@ http.get(url, function(response) {
   "location":{
     "country":"CL",
     "region":"Regi\u00f3n Metropolitana",
-    "city":"Chicureo","lat":-33.28379,
-    "lng":-70.65333,"postalCode":"",
+    "city":"Chicureo",
+    "lat":-33.28379,
+    "lng":-70.65333,
+    "postalCode":"",
     "timezone":"-03:00",
     "geonameId":3895165},
   "as":{
