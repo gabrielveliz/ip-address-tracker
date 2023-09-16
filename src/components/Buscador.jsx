@@ -2,7 +2,12 @@ import icono from "../images/icon-arrow.svg"
 import React from "react";
 import '../styles/Buscador.css';
 
-function Buscador(){
+function Buscador({ipb, setipb}){
+
+const buscar = () => {
+    let dato= document.getElementById("contbusq").value;
+    setipb(dato);
+  }
 
   return(
     <div className="contbuscador">
@@ -10,8 +15,8 @@ function Buscador(){
         <span>IP Address Tracker</span>
       </div>
       <div className="barrabusqueda">
-        <input type="text" placeholder="Search for any IP address or domain" />
-        <button><img src={icono} alt="flecha" /></button>
+        <input id="contbusq"  type="text" placeholder="Search for any IP address or domain" />
+        <button onClick={buscar}><img src={icono} alt="flecha" /></button>
       </div>
     </div>
   );
