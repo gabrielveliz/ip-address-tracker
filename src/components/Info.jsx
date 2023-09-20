@@ -1,22 +1,7 @@
 import React from 'react';
 import '../styles/Info.css';
-import axios from "axios";
-import Maps from "./Maps";
 
-function Info({ipb, setipb, post, setPost}){
-
-
-
-  React.useEffect(() => {
-/* traer datos de ipify */
-
-    const baseURL = 'http://ip-api.com/json/' + ipb;
-    axios.get(baseURL).then((response) => {
-      setPost(response.data);
-    });
-  }, [ipb]);
-
-  if (!post) return null;
+function Info({post}){
 
   let loca = post.city + ", " + post.region + ", "  + post.country ;
   let ip=post.query;
@@ -46,10 +31,6 @@ function Info({ipb, setipb, post, setPost}){
         
       </div>
     </div>
-          <Maps 
-          a={post.lat} 
-          b={post.lon}
-          />
       </>
   );
 }

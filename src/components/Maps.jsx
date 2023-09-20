@@ -13,26 +13,20 @@ const iconPerson = new L.Icon({
     shadowUrl: null,
     shadowSize: null,
     shadowAnchor: null,
-
     className: 'leaflet-div-icon'
 });
 
-const Maps =({a,b})=>{
-  const position =[a,b];
-  const position2 = [position[0]+0.000570,position[1]+0.000050]
+const Maps =({post})=>{
+
+  const position2 = [post.lat+0.000570,post.lon+0.000050]
 
   return(
     <>
     <MapContainer 
-    center={position} 
+    center={[post.lat,post.lon]} 
     zoom={17} 
-    scrollWheelZoom={false} 
-    attributionControl={false}
-    doubleClickZoom={false} 
-    dragging={false}
     className='mapa' 
-    zoomControl={false}>
-      
+    >
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

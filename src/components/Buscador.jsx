@@ -1,12 +1,17 @@
 import icono from "../images/icon-arrow.svg"
 import React from "react";
 import '../styles/Buscador.css';
+import axios from "axios";
 
-function Buscador({ipb, setipb}){
+function Buscador({setPost}){
 
 const buscar = () => {
     let dato= document.getElementById("contbusq").value;
-    setipb(dato);
+    
+    const baseURL = 'http://ip-api.com/json/' + dato;
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+      });
   }
 
   return(

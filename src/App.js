@@ -1,15 +1,16 @@
 import './App.css';
 import Buscador from "./components/Buscador";
-
 import Info from "./components/Info";
 import Foot from "./components/Foot";
 import React, { useState } from "react";
-
+import Maps from "./components/Maps";
+import axios from "axios";
 
 function App() {
-  
-  const [post, setPost] = React.useState(null);
+  const [post, setPost] = useState(null);
   const [ipb, setipb] = useState("");
+
+  
   
     /* obtener ip publica */
     const URL_API = "https://api.ipify.org/?format=json";
@@ -19,13 +20,23 @@ function App() {
       setipb(respuesta.ip);
     });
     
-  /*156.254.5.4 ip para pruebas */
+    React.useEffect(() => {
+      /* traer datos de ipify */
+          const baseURL = 'http://ip-api.com/json/' + ipb;
+          axios.get(baseURL).then((response) => {
+            setPost(response.data);
+          });
+        }, []);
+
+        if (!post) return null;
+
+
   return (
     <div className='contenedor'>
 
-      <Buscador ipb={ipb} setipb={setipb} />
-      <Info ipb={ipb} setipb={setipb}
-        post={post} setPost={setPost}/>
+      <Buscador setPost={setPost}  />
+      <Info post={post}/>
+      <Maps post={post}/>
       <Foot/>
     </div>
     
