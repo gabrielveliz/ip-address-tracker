@@ -2,17 +2,39 @@ import React from 'react';
 import '../styles/Info.css';
 
 function Info({post}){
-
   let loca = post.city + ", " + post.region + ", "  + post.country ;
   let ip=post.query;
   let zone = post.timezone;
   let isp=post.isp;
+
+
+  if(post.lat===undefined && post.lon===undefined)
+  {
+
+    loca = "Not found" ;
+    zone = "--";
+    isp="--";
+
+    if(post.message==="invalid query"){
+      ip="Invalid";
+      isp="Invalid";
+    }
+    if(post.message==="private range"){
+      isp="Private range";
+    }
+    if(post.message==="reserved range"){
+      isp="Reserved range";
+    }
+
+  }
+  
 
   return(
     <>
     <div className="continfo">
       <div className='conttabla'>
         <div className='col borde'>
+        
           <div className='titulotabla'><span>IP Address</span></div>
           <div className='datotabla'><span>{ip}</span></div>
         </div>
@@ -30,6 +52,7 @@ function Info({post}){
         </div>
         
       </div>
+      
     </div>
       </>
   );

@@ -23,6 +23,7 @@ function App() {
     setContador(contador + 1);
   };
   
+  
     /* obtener ip publica */
     const URL_API = "https://api.ipify.org/?format=json";
     fetch(URL_API)
@@ -33,7 +34,7 @@ function App() {
     });
     
     React.useEffect(() => {
-      /* traer datos de ipify */
+      /* traer datos ip usuario */
           const baseURL = 'http://ip-api.com/json/' + ipb;
           axios.get(baseURL).then((response) => {
             setPost(response.data);
@@ -56,6 +57,7 @@ function App() {
     </div>
     
   );
+  
 }
 
 export default App;

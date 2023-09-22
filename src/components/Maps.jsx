@@ -30,7 +30,7 @@ const Maps =({lat,lng})=>{
     <>
     <MapContainer 
     center={[lat,lng]} 
-    zoom={17} 
+    zoom={14} 
     className='mapa' 
     >
     <TileLayer
