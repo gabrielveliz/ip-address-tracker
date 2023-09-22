@@ -8,11 +8,12 @@ function Buscador({setPost,onBuscar}){
 const buscar = () => {
     let dato= document.getElementById("contbusq").value;
     
-    const baseURL = 'http://ip-api.com/json/' + dato;
+    const baseURL = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_OJw19SRXpHGnmjy5JBfAMT55jpkdw&ipAddress=' + dato;
     axios.get(baseURL).then((response) => {
       setPost(response.data);
-      if(response.data.lat!==undefined && response.data.lon!==undefined)
-      {onBuscar(response.data.lat,response.data.lon);}
+      
+      if(response.data.location.lat!==undefined && response.data.location.lng!==undefined)
+      {onBuscar(response.data.location.lat,response.data.location.lng);}
     });
   }
   const handleKeyDown = event => {

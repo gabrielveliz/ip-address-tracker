@@ -2,13 +2,13 @@ import React from 'react';
 import '../styles/Info.css';
 
 function Info({post}){
-  let loca = post.city + ", " + post.region + ", "  + post.country ;
-  let ip=post.query;
-  let zone = post.timezone;
+  let loca = post.location.city + ", " + post.location.region + ", "  + post.location.country ;
+  let ip=post.ip;
+  let zone = post.location.timezone;
   let isp=post.isp;
 
 
-  if(post.lat===undefined && post.lon===undefined)
+  if(post.location.lat===undefined && post.location.lng===undefined)
   {
 
     loca = "Not found" ;
@@ -44,7 +44,7 @@ function Info({post}){
         </div>
         <div className='col borde'>
           <div className='titulotabla'><span>Timezone</span></div>
-          <div className='datotabla'><span>{zone}</span></div>
+          <div className='datotabla'><span>UTC </span><span>{zone}</span></div>
         </div>
         <div className='col'>
           <div className='titulotabla'><span>ISP</span></div>
