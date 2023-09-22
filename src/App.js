@@ -9,8 +9,19 @@ import axios from "axios";
 function App() {
   const [post, setPost] = useState(null);
   const [ipb, setipb] = useState("");
-
+  const [mapas, setMapas] = useState([]);
+  const [contador, setContador] = useState(0);
   
+  const onBuscar = (lat, lng) => {
+    const nuevoMapa = {
+      lat,
+      lng,
+      zoom: 13,
+      id: contador,
+    };
+    setMapas([...mapas, nuevoMapa]);
+    setContador(contador + 1);
+  };
   
     /* obtener ip publica */
     const URL_API = "https://api.ipify.org/?format=json";
@@ -18,6 +29,7 @@ function App() {
     .then(respuestaRaw => respuestaRaw.json())
     .then(respuesta => {
       setipb(respuesta.ip);
+      
     });
     
     React.useEffect(() => {
@@ -25,6 +37,7 @@ function App() {
           const baseURL = 'http://ip-api.com/json/' + ipb;
           axios.get(baseURL).then((response) => {
             setPost(response.data);
+            onBuscar(response.data.lat,response.data.lon)
           });
         }, []);
 
@@ -34,9 +47,11 @@ function App() {
   return (
     <div className='contenedor'>
 
-      <Buscador setPost={setPost}  />
+      <Buscador setPost={setPost} onBuscar={onBuscar} />
       <Info post={post}/>
-      <Maps post={post}/>
+      {mapas.map((mapa) => (
+        <Maps key={mapa.id} {...mapa} />
+      ))}
       <Foot/>
     </div>
     

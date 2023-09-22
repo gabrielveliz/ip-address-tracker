@@ -3,7 +3,7 @@ import React from "react";
 import '../styles/Buscador.css';
 import axios from "axios";
 
-function Buscador({setPost}){
+function Buscador({setPost,onBuscar}){
 
 const buscar = () => {
     let dato= document.getElementById("contbusq").value;
@@ -11,6 +11,7 @@ const buscar = () => {
     const baseURL = 'http://ip-api.com/json/' + dato;
     axios.get(baseURL).then((response) => {
       setPost(response.data);
+      onBuscar(response.data.lat,response.data.lon)
       });
   }
 

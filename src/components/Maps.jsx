@@ -16,14 +16,20 @@ const iconPerson = new L.Icon({
     className: 'leaflet-div-icon'
 });
 
-const Maps =({post})=>{
+const Maps =({lat,lng})=>{
+  const mapRef = React.useRef(null);
 
-  const position2 = [post.lat+0.000570,post.lon+0.000050]
+  const position2 = [lat+0.000570,lng+0.000050]
 
+  React.useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.leafletElement.setView([lat, lng]);
+    }
+  }, [lat, lng]);
   return(
     <>
     <MapContainer 
-    center={[post.lat,post.lon]} 
+    center={[lat,lng]} 
     zoom={17} 
     className='mapa' 
     >

@@ -22,7 +22,7 @@ function Info({post}){
         </div>
         <div className='col borde'>
           <div className='titulotabla'><span>Timezone</span></div>
-          <div className='datotabla'><span>UTC </span><span>{zone}</span></div>
+          <div className='datotabla'><span>{zone}</span></div>
         </div>
         <div className='col'>
           <div className='titulotabla'><span>ISP</span></div>
