@@ -2,27 +2,25 @@ import React from 'react';
 import '../styles/Info.css';
 
 function Info({post}){
-  let loca = post.location.city + ", " + post.location.region + ", "  + post.location.country ;
+  let loca = post.city + ", " + post.region + ", "  + post.country ;
   let ip=post.ip;
-  let zone = post.location.timezone;
-  let isp=post.isp;
+  let zone = post.utc_offset;
+  let isp=post.org;
 
 
-  if(post.location.lat===undefined && post.location.lng===undefined)
+  if(post.latitude===undefined && post.longitude===undefined)
   {
-
+    console.log(post)
     loca = "Not found" ;
     zone = "--";
     isp="--";
 
-    if(post.message==="invalid query"){
+    if(post.reason==="Invalid IP Address"){
       ip="Invalid";
       isp="Invalid";
     }
-    if(post.message==="private range"){
-      isp="Private range";
-    }
-    if(post.message==="reserved range"){
+
+    if(post.reason==="Reserved IP Address"){
       isp="Reserved range";
     }
 
@@ -44,7 +42,7 @@ function Info({post}){
         </div>
         <div className='col borde'>
           <div className='titulotabla'><span>Timezone</span></div>
-          <div className='datotabla'><span>UTC </span><span>{zone}</span></div>
+          <div className='datotabla'><span>{zone}</span></div>
         </div>
         <div className='col'>
           <div className='titulotabla'><span>ISP</span></div>

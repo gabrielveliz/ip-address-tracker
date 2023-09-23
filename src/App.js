@@ -23,7 +23,6 @@ function App() {
     setContador(contador + 1);
   };
   
-  
     /* obtener ip publica */
     const URL_API = "https://api.ipify.org/?format=json";
     fetch(URL_API)
@@ -34,11 +33,11 @@ function App() {
     });
     
     React.useEffect(() => {
-      /* traer datos ip usuario */
-      const baseURL = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_OJw19SRXpHGnmjy5JBfAMT55jpkdw&ipAddress=' + ipb;
+      /* traer datos de ipify */
+          const baseURL = 'https://ipapi.co/'+ipb+'/json/';
           axios.get(baseURL).then((response) => {
             setPost(response.data);
-            onBuscar(response.data.location.lat,response.data.location.lng)
+            onBuscar(response.data.latitude,response.data.longitude)
           });
         }, []);
 
@@ -57,7 +56,6 @@ function App() {
     </div>
     
   );
-  
 }
 
 export default App;
