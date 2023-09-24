@@ -25,7 +25,7 @@ const buscar = () => {
   return(
     <div className="contbuscador">
       <div className="titulo">
-        <span>IP Address Tracker</span>
+        <h1>IP Address Tracker</h1>
       </div>
       <div className="barrabusqueda" onKeyDown={handleKeyDown}>
         <input id="contbusq"  type="text" placeholder="Search for any IP address or domain" />
